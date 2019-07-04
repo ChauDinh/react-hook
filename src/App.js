@@ -1,6 +1,7 @@
-import React, { useEffect } from "react";
+import React, { useState } from "react";
 import "./App.css";
 import { useForm } from "./useForm";
+import { Hello } from "./Hello";
 
 const App = () => {
   const [values, handleChange] = useForm({
@@ -9,12 +10,20 @@ const App = () => {
     firstName: ""
   });
 
-  useEffect(() => {
-    console.log("render");
-  }, [values.password, values.email]);
+  const [hello, setHello] = useState(true);
+
+  // useEffect(() => {
+  //   console.log("render");
+
+  //   return () => {
+  //     console.log("unmount");
+  //   };
+  // }, [values.password, values.email]);
 
   return (
     <div className="App">
+      <button onClick={() => setHello(!hello)}>Toggle</button>
+      {hello && <Hello />}
       <input
         name="email"
         value={values.email}
