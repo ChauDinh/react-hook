@@ -13,12 +13,15 @@ const App = () => {
   // const [hello, setHello] = useState(true);
 
   useEffect(() => {
-    console.log("render");
+    const onMouseMove = e => {
+      console.log(e);
+    };
+    window.addEventListener("mousemove", onMouseMove);
 
     return () => {
-      console.log("unmount");
+      window.removeEventListener("mousemove", onMouseMove);
     };
-  }, [values.email]);
+  }, []);
 
   return (
     <div className="App">
