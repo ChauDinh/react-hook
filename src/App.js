@@ -12,15 +12,23 @@ const App = () => {
 
   // const [hello, setHello] = useState(true);
 
-  useEffect(() => {
-    const onMouseMove = e => {
-      console.log(e);
-    };
-    window.addEventListener("mousemove", onMouseMove);
+  // useEffect(() => {
+  //   const onMouseMove = e => {
+  //     console.log(e);
+  //   };
+  //   window.addEventListener("mousemove", onMouseMove);
 
-    return () => {
-      window.removeEventListener("mousemove", onMouseMove);
-    };
+  //   return () => {
+  //     window.removeEventListener("mousemove", onMouseMove);
+  //   };
+  // }, []);
+
+  useEffect(() => {
+    console.log("mount 1");
+  }, []);
+
+  useEffect(() => {
+    console.log("mount 2");
   }, []);
 
   return (
