@@ -11,7 +11,7 @@ const App = () => {
       <button
         onClick={() => {
           setCount(currentCount => currentCount + 1);
-          setCount2(currentCount => currentCount + 1);
+          setCount2(currentCount => currentCount + 2);
         }}
       >
         +
