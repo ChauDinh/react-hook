@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import "./App.css";
 import { useForm } from "./useForm";
-import { Hello } from "./Hello";
+import { useFetch } from "./useFetch";
 
 const App = () => {
   const [values, handleChange] = useForm({
@@ -10,29 +10,14 @@ const App = () => {
     firstName: ""
   });
 
-  // const [hello, setHello] = useState(true);
-
-  // useEffect(() => {
-  //   const onMouseMove = e => {
-  //     console.log(e);
-  //   };
-  //   window.addEventListener("mousemove", onMouseMove);
-
-  //   return () => {
-  //     window.removeEventListener("mousemove", onMouseMove);
-  //   };
-  // }, []);
-
-  useEffect(() => {
-    console.log("mount 1");
-  }, []);
-
-  useEffect(() => {
-    console.log("mount 2");
-  }, []);
+  const [count, setCount] = useState(0);
+  const { data, loading } = useFetch(`http://numbersapi.com/${count}/trivia`);
 
   return (
     <div className="App">
+      <div>{loading ? "loading..." : data}</div>
+      <div>count: {count}</div>
+      <button onClick={() => setCount(c => c + 1)}>increment</button>
       {/* <button onClick={() => setHello(!hello)}>Toggle</button>
       {hello && <Hello />} */}
       <input
