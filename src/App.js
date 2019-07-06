@@ -14,6 +14,10 @@ const App = () => {
 
   const [hello, setHello] = useState(true);
 
+  // useLayoutEffect(() => {
+  //   console.log(inputRef.current.getBoundingClientRect());
+  // }, []);
+
   return (
     <div className="App">
       <button onClick={() => setHello(!hello)}>Toggle</button>
