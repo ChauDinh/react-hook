@@ -12,10 +12,11 @@ export const Hello = () => {
     localStorage.setItem("count", JSON.stringify(count));
   }, [count]);
 
+  const [rect, setRect] = useState({});
   const divRef = useRef();
 
   useLayoutEffect(() => {
-    console.log(divRef.current.getBoundingClientRect());
+    setRect(divRef.current.getBoundingClientRect());
   }, [data]);
 
   return (
@@ -23,6 +24,8 @@ export const Hello = () => {
       <div style={{ display: "flex" }}>
         <div ref={divRef}>{loading ? "loading..." : data}</div>
       </div>
+      {/* display the rectangle */}
+      <pre>{JSON.stringify(rect, null, 2)}</pre>
       <div>count: {count}</div>
       <button onClick={() => setCount(c => c + 1)}>increment</button>
     </div>
