@@ -2,6 +2,7 @@ import React, { useState, useRef } from "react";
 import "./App.css";
 import { useForm } from "./useForm";
 import { Hello } from "./Hello";
+import { useMeasure } from "./useMeasure";
 
 const App = () => {
   const [values, handleChange] = useForm({
@@ -14,9 +15,7 @@ const App = () => {
 
   const [hello, setHello] = useState(true);
 
-  // useLayoutEffect(() => {
-  //   console.log(inputRef.current.getBoundingClientRect());
-  // }, []);
+  const [rect, inputRef2] = useMeasure([]);
 
   return (
     <div className="App">
@@ -30,6 +29,7 @@ const App = () => {
         placeholder="Email"
       />
       <input
+        ref={inputRef2}
         name="firstName"
         value={values.firstName}
         onChange={handleChange}

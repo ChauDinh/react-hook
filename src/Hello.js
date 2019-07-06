@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useLayoutEffect, useRef } from "react";
+import React, { useState, useEffect } from "react";
 import { useFetch } from "./useFetch";
 import { useMeasure } from "./useMeasure";
 
@@ -11,9 +11,7 @@ export const Hello = () => {
     localStorage.setItem("count", JSON.stringify(count));
   }, [count]);
 
-  const divRef = useRef();
-
-  const rect = useMeasure(divRef, [data]);
+  const [rect, divRef] = useMeasure([data]);
 
   return (
     <div>
